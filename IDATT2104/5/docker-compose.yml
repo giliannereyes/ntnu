@@ -1,0 +1,25 @@
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_BACKEND_URL=http://localhost:8000
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - CPP_IMAGE=cpp-runner:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - runner-cpp
+
+  runner-cpp:
+    build: ./runner-cpp
+    image: cpp-runner:latest
+    command: ["sleep", "infinity"]

@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+:root {
+  font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+}
